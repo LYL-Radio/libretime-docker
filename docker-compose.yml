@@ -1,0 +1,56 @@
+version: "3.6"
+
+services:
+
+  libretime:
+    build: .
+    container_name: libretime
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - rabbitmq
+    volumes:
+     - ./config:/etc/airtime
+     - media:/srv/airtime/stor
+    ports:
+      - 80:80
+      - 8001:8001
+      - 8002:8002
+
+  postgres:
+    image: postgres
+    container_name: libretime-db
+    restart: unless-stopped
+    volumes:
+      - db:/var/lib/postgresql/data
+    environment:
+      TZ: FR
+      POSTGRES_DB: libretime
+      POSTGRES_USER: libretime
+      POSTGRES_PASSWORD: libretime
+
+  rabbitmq:
+    image: rabbitmq
+    container_name: libretime-rabbitmq
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: libretime
+      RABBITMQ_DEFAULT_PASS: libretime
+      RABBITMQ_DEFAULT_VHOST: /libretime
+
+  icecast:
+    image: infiniteproject/icecast
+    container_name: libretime-icecast
+    restart: unless-stopped
+    environment:
+      ICECAST_SOURCE_PASSWORD: libretime
+      ICECAST_ADMIN_USERNAME: libretime
+      ICECAST_ADMIN_PASSWORD: libretime
+      ICECAST_HOSTNAME: icecast
+      ICECAST_LOCATION: live
+    
+volumes:
+  db:
+    name: libretime-db
+  media:
+    name: libretime-media
