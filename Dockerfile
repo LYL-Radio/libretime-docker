@@ -1,7 +1,8 @@
 FROM ubuntu:18.04
 
-LABEL maintainer="me@maxep.me"
-LABEL description="Libretime Radio Broadcast Docker Image"
+LABEL maintainer "me@maxep.me"
+LABEL description "Libretime Radio Broadcast Docker Image"
+LABEL org.opencontainers.image.source https://github.com/LYL-Radio/libretime-docker
 
 ENV DEBIAN_FRONTEND noninteractive
 
