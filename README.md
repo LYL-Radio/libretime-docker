@@ -1,8 +1,9 @@
 # [LibreTime](https://libretime.org/) Docker Image
+![Docker Image CI](https://github.com/LYL-Radio/libretime-docker/workflows/Docker%20Image%20CI/badge.svg)
 
 A simple LibreTime image for multi-container environment expecting Postgres, Rabbitmq, and Icecast to be set up externally.
 
-You will be required to go through the LibreTime setup wizard when running for the first time, it is strongly recommended to mount `/etc/airtime` and `/srv/airtime/stor` folders to persistent volumes.
+You will be required to go through the LibreTime setup wizard when running for the first time, it is strongly recommended to mount `/etc/airtime` and `/srv/airtime/stor` folders to persistent volumes to store your configuration and media library.
 
 This repo also provides a `docker-compose.yml` configuration for a quick setup.
 
