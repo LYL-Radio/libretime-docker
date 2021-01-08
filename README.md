@@ -5,8 +5,13 @@ A simple LibreTime image for multi-container environment expecting Postgres, Rab
 
 You will be required to go through the LibreTime setup wizard when running for the first time, it is strongly recommended to mount `/etc/airtime` and `/srv/airtime/stor` folders to persistent volumes to store your configuration and media library.
 
-This repo also provides a `docker-compose.yml` configuration for a quick setup.
+## Install
 
+```bash
+docker pull ghcr.io/lyl-radio/libretime:latest
+```
+
+This repo also provides a `docker-compose.yml` configuration for a quick setup.
 ## Credits
 
 This image is based on work from:
