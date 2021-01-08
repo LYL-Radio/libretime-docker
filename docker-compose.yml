@@ -3,7 +3,7 @@ version: "3.6"
 services:
 
   libretime:
-    build: .
+    image: ghcr.io/lyl-radio/libretime:latest
     container_name: libretime
     restart: unless-stopped
     depends_on:
@@ -42,6 +42,8 @@ services:
     image: infiniteproject/icecast
     container_name: libretime-icecast
     restart: unless-stopped
+    ports:
+      - 8000:8000
     environment:
       ICECAST_SOURCE_PASSWORD: libretime
       ICECAST_ADMIN_USERNAME: libretime
