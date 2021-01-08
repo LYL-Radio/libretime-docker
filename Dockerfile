@@ -4,6 +4,8 @@ LABEL maintainer "me@maxep.me"
 LABEL description "Libretime Radio Broadcast Docker Image"
 LABEL org.opencontainers.image.source https://github.com/LYL-Radio/libretime-docker
 
+ARG BRANCH=master
+
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
@@ -18,7 +20,7 @@ RUN locale-gen --purge en_US.UTF-8 && \
 
 COPY systemctl.py /usr/bin/systemctl
 
-RUN git clone --depth=1 --branch=master https://github.com/LibreTime/libretime.git /src
+RUN git clone --depth=1 --branch=$BRANCH https://github.com/LibreTime/libretime.git /src
 
 # Prepare LibreTime Install
 RUN SYSTEM_INIT_METHOD=`readlink --canonicalize -n /proc/1/exe | rev | cut -d'/' -f 1 | rev` && \
