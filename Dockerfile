@@ -4,7 +4,7 @@ LABEL maintainer "me@maxep.me"
 LABEL description "Libretime Radio Broadcast Docker Image"
 LABEL org.opencontainers.image.source https://github.com/LYL-Radio/libretime-docker
 
-ARG BRANCH=master
+ARG BRANCH=3.0.0-alpha.9
 
 ENV DEBIAN_FRONTEND noninteractive
 
