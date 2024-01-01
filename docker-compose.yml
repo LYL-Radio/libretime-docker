@@ -4,14 +4,15 @@ services:
 
   libretime:
     image: ghcr.io/lyl-radio/libretime:latest
+    build: .
     container_name: libretime
     restart: unless-stopped
     depends_on:
       - postgres
       - rabbitmq
     volumes:
-     - ./config:/etc/airtime
-     - media:/srv/airtime/stor
+     - ./config:/etc/libretime
+     - media:/srv/libretime
     ports:
       - 80:80
       - 8001:8001
